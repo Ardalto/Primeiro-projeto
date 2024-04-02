@@ -1,6 +1,6 @@
 <h1 align="center">Meu Primeiro Projeto </h1>
 
-<p aling="center">
+<p align="center">
 Evendo exclusivo e gratuito, promovito pela Rocketseat para ensino de tecnologias WEB.
 </p>
 
