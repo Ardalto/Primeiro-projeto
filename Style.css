@@ -2,26 +2,27 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
- }
+}
 
 /*aqui, usamos o pseud-selector ":root" no lugar de "html" e ultizamos "--text-color: white;" para que o código entenda que tudo que tiver essa expressão, tenha a cor branca. Vamos subistibuir tudo que tem a cor branca por esta expressão, substituindo APENAS a parte que diz respeito a cor em si, não a linha completa. Ex:#ffffff ou White.*/
 :root {
   --text-color: white;
-  --gb-url: url(./assets/assets/bg-mobile.jpg);
+  --gb-url: url(./assets/bg-mobile.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./assets/assets/moon-stars.svg)}
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
 
 .light {
   --text-color: black;
-  --gb-url: url(./assets/assets/bg-mobile-light.jpg);
+  --gb-url: url(./assets/bg-mobile-light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(./assets/assets/sun.svg);
+  --switch-bg-url: url(./assets/sun.svg);
 }
 /* Body */
 body {
@@ -52,10 +53,8 @@ body * {
 }
 #profile p {
   font-weight: 500;
-  font-size: 16px;
   line-height: 24px;
-  padding: 24px;
-  padding-top: 9px;
+  margin-top: 8px;
 }
 
 /* Switch */
@@ -74,35 +73,30 @@ body * {
   background: white var(--switch-bg-url) no-repeat center;
   border: 0px;
   border-radius: 50%;
-  top: 50%;
-
-  /* Indica a posição inicial do botão */
-  left: 0;
 
   /* Joga a infomação da # para a cima */
   position: absolute;
-
+  top: 50%;
+  /* Indica a posição inicial do botão */
+  left: 0;
   /* Muda o andar da informação*/
   z-index: 1;
-
   /* Permite a movitação do elemento na vertical com o "translateY" */
-  transform: translateY(-49%);
+  transform: translateY(-50%);
+
+  animation: slide-back 0.2s;
 }
 
 /* Configuração do button para a versão "light" */
 /* É necessário escrever as tags da forma exata que eles estão representadas. Ex: ":root", "#switch", ".light", etc... */
 .light #switch button {
-  right: 0;
-
-  /* Informa ao CSS que o botão deve voltar a sua maneira inicial, neste caso, volta para a direita */
-  left: initial;
-
   animation: slide-in 0.2s forwards;
 }
 
 #switch button:hover {
-  outline: 8px solid var(--highlight-color)
+  outline: 8px solid var(--highlight-color);
 }
+
 #switch span {
   display: block;
   width: 64px;
@@ -113,6 +107,7 @@ body * {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 9999px;
 }
+
 /* Links */
 ul {
   list-style: none;
@@ -134,13 +129,13 @@ ul li a {
   border: 1px solid var(--stroke-color);
   border-radius: 8px;
 
-  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
   text-decoration: none;
   font-weight: 500;
 
-  transition: background, 0.2s;
+  transition: background 0.2s;
 }
 
 /* pseudo-selector*/
@@ -166,7 +161,7 @@ ul li a:hover {
   justify-content: center;
   padding: 16px;
 
-  transition: background, 0.2s;
+  transition: background 0.2s;
   border-radius: 50%;
 }
 
@@ -180,4 +175,36 @@ footer {
   padding: 24px 0px;
   text-align: center;
   font-size: 14px;
+}
+
+/* media queries */
+
+@media (min-width: 700px) {
+  :root {
+    --gb-url: url(./assets/bg-desktop.png);
+  }
+
+  .light {
+    --gb-url: url(./assets/bg-desktop-light.png);
+  }
+}
+
+/* animation */
+/* fará com que o botão deslize suavimente da esquerda para a direita*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
 }
